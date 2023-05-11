@@ -1,0 +1,94 @@
+.custom-loader {
+    width: 50px;
+    height: 50px;
+    display: grid;
+    border: 4px solid #0000;
+    border-radius: 50%;
+    border-color: rgb(174, 192, 184) #0000;
+    animation: s6 1s infinite linear;
+  }
+  
+  .custom-loader::before,
+  .custom-loader::after {
+    content: "";
+    grid-area: 1/1;
+    margin: 2px;
+    border: inherit;
+    border-radius: 50%;
+  }
+  
+  .custom-loader::before {
+    border-color: #558A78 #0000;
+    animation: inherit;
+    animation-duration: .5s;
+    animation-direction: reverse;
+  }
+  
+  .custom-loader::after {
+    margin: 8px;
+  }
+  
+  @keyframes s6 {
+    100% {
+      transform: rotate(1turn)
+    }
+  }
+  
+  /*Loader*/
+  #loading {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    background-color: #6f6b6b;
+    z-index: 99;
+  }
+  
+  #loading-image {
+    z-index: 100;
+    margin: 3rem;
+  }
+  
+  .spinner {
+    margin-top: 1rem;
+    width: 6rem;
+    height: 6rem;
+    display: grid;
+    border: 4.5px solid #0000;
+    border-radius: 50%;
+    border-right-color: #21b916;
+    animation: spinner 1s infinite linear;
+  }
+  
+  .spinner::before,
+  .spinner::after {
+    content: "";
+    grid-area: 1/1;
+    margin: 2.2px;
+    border: inherit;
+    border-radius: 50%;
+    animation: spinner 2s infinite;
+  }
+  
+  .spinner::after {
+    margin: 8.9px;
+    animation-duration: 3s;
+  }
+  
+  @keyframes spinner {
+    100% {
+      transform: rotate(1turn);
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    #loading-image {
+      width: 80%;
+    }
+  }

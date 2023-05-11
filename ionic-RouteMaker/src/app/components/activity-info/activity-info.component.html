@@ -1,0 +1,17 @@
+<section class="activity_description">
+  <div class="img_activity_description" id="img_activity_description">
+      <img id="activity_img" src="{{actividad.image}}" alt="{{actividad.name}}" />
+  </div>
+  <div class="description">
+          <h2 id="activity_name">{{actividad.name}}</h2>
+      <p id="activity_info_description">{{actividad.description}}</p>
+  </div>
+  <div class="line"></div>
+  <div class="activity_details">
+      <div class="activity_location">
+          <h3>Localización</h3>
+          <p id="activity_location"><i class="bi bi-geo-alt"></i>{{actividad.location}}</p>
+          <iframe [src]="sanitizeUrl(actividad.location_map)" id="activity_map" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+  </div>
+</section>
