@@ -9,6 +9,8 @@
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
 
+@import "~bootstrap/dist/css/bootstrap.css";
+
 /* Core CSS required for Ionic components to work properly */
 @import "@ionic/angular/css/core.css";
 
@@ -24,3 +26,103 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+body{
+    margin: 0;
+    background-color: white;
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html{
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+header{
+    background-color: #A0B1AC;
+    width: 100%;
+    height: 4.5rem;
+    display: flex;
+    align-items: center;
+    z-index: 3; /* Establecemos un z-index mayor para evitar que el dropdown se quede solapado por la searchBar */
+    position: fixed;
+    top: 0;
+}
+
+.body_container {
+    width: 100%;
+    max-width: 75rem;
+    margin: 0 auto;
+}
+
+.line {
+    width: 100%;
+    height: 0.25rem;
+    background-color: #558A78;
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 1280px) {
+    .body_container {
+        max-width: 62.5rem;
+    }
+}
+
+@media (max-width: 1080px) {
+    .body_container {
+        max-width: 54rem;
+    }
+}
+
+@media (max-width: 960px) {
+    .body_container {
+        max-width: 50rem;
+    }
+}
+
+@media (max-width: 890px) {
+    .body_container {
+        max-width: 45rem;
+    }
+}
+
+@media (max-width: 800px) {
+    .body_container {
+        max-width: 35rem;
+    }
+}
+
+@media (max-width: 700px) {
+    .body_container {
+        max-width: 30rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .body_container {
+        max-width: 25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .body_container {
+        max-width: 20rem;
+    }
+}
+
+@media (max-width: 390px) {
+    .body_container {
+        max-width: 15rem;
+    }
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

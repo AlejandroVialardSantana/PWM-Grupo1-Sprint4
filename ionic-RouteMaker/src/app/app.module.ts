@@ -15,11 +15,14 @@ import { getFirestore } from 'firebase/firestore';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+import { ComponentsModule } from './components/components.module';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, 
     IonicModule.forRoot(), 
     AppRoutingModule,
+    ComponentsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireDatabaseModule,
