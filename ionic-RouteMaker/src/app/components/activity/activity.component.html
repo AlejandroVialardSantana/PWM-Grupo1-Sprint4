@@ -1,0 +1,27 @@
+<div class="activity_container" *ngIf="activities && activities.length > 0">
+  <div *ngFor="let activity of paginatedActivities" class="activity_container_box" (click)="navigateToActivityDescription(activity)">
+    <div class="activity_container_image">
+      <img [src]="activity.image" [alt]="activity.name">
+    </div>
+    <div class="activity_container_content">
+      <div class="activity_container_top">
+        <h3>{{activity.name}}</h3>
+        <div id="max_activity_description_height">
+          <p>{{activity.description}}</p>
+        </div>
+      </div>
+      <div class="activity_container_bottom">
+        <div class="five_stars">
+          <i *ngFor="let star of activity.stars_array" [class]="star ? 'bi bi-star-fill' : 'bi bi-star'"></i>
+        </div>
+        <span class="activity_container_price">Precio: {{activity.price}}€</span>
+      </div>
+    </div>
+  </div>
+
+  <mat-paginator [length]="activities.length"
+                 [pageSize]="pageSize"
+                 [pageSizeOptions]="pageSizeOptions"
+                 (page)="paginateActivities($event)">
+  </mat-paginator>
+</div>

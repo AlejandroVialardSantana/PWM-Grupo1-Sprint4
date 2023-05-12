@@ -1,0 +1,9 @@
+<section class="home_container" >
+  <div class="home_content">
+      <h1 id="home_phrase">{{ barTitle }}</h1>
+      <div class="search_bar">
+          <input type="text" [(ngModel)]="actualSearchText" (ngModelChange)="onSubmit()" (keyup.enter)="onSubmit()" placeholder=" {{ barPlaceHolder }}">
+          <button class="search_button" (click)="onSubmit()"><i class="bi bi-search"></i></button>
+      </div>
+  </div>
+</section>

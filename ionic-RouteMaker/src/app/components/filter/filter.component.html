@@ -1,0 +1,24 @@
+<div class="filter bg-light p-3">
+  <h4>Filtrar por:</h4>
+  <h5>Duración máxima: <strong>{{ duration }}h</strong></h5>
+  <input type="range" class="form-range" min="1" max="8" [(ngModel)]="duration" name="duration" (change)="onDurationChange()">  <hr class="dashed">
+  <h5>Tipo de actividad: </h5>
+  <div *ngFor="let type of activityTypes">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" [(ngModel)]="type.checked" id="{{type.value}}-tipoactividad" (change)="onActivityTypeChange(type)">      <label class="form-check-label" for="{{type.value}}-tipoactividad">
+        {{type.viewValue}}
+      </label>
+    </div>
+  </div>
+  <hr class="dashed">
+  <h5>Coste máximo: <strong>{{ maxCost }}€</strong></h5>
+  <input type="range" class="form-range" min="0" max="50" [(ngModel)]="maxCost" name="maxCost" (change)="onMaxCostChange()">  <hr class="dashed">
+  <h5>Necesidades específicas:</h5>
+  <div *ngFor="let need of specificNeeds">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" [(ngModel)]="need.checked" id="{{need.value}}-necesidadesespecificas" (change)="onSpecificNeedChange(need)">      <label class="form-check-label" for="{{need.value}}-necesidadesespecificas">
+        {{need.viewValue}}
+      </label>
+    </div>
+  </div>
+</div>

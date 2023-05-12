@@ -1,0 +1,162 @@
+.activity_container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    max-width: 120rem;
+    margin: 0 auto;
+    position: relative;
+}
+
+.activity_container_box:not(:first-child) {
+    margin-top: 0.625rem; /* Separación entre las cajas */
+}
+
+#max_activity_description_height {
+    max-height: 4rem;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ccc #fff;
+    scroll-behavior: smooth;
+}
+
+/* Estilos para la barra de desplazamiento */
+div::-webkit-scrollbar {
+    width: 6px;
+}
+
+div::-webkit-scrollbar-track {
+    background-color: #e0e0e0;
+}
+
+div::-webkit-scrollbar-thumb {
+    background-color: #999;
+}
+
+.activity_container_box {
+    display: flex;
+    width: 50rem;
+    border: 0.0625rem solid black;
+    padding: 0.3125rem; /* Separación entre el borde y el contenido */
+    align-items: center;
+    border-radius: 0.35rem;
+}
+
+.activity_container_image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.activity_container_image img {
+    height: 8rem; /* Se establece la altura en 7rem para la imagen */
+    width: 8rem; /* Se establece el ancho en 7rem para la imagen */
+}
+
+.activity_container_content {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between; /* Se agrega para centrar verticalmente */
+    height: 8rem;
+    padding-left: 0.3125rem;
+    flex-grow: 1; /* Se agrega para que se extienda hacia la derecha */
+    margin: 0 auto;
+}
+
+.activity_container_content h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0.3125rem 0;
+}
+
+.activity_container_content p {
+    font-size: 0.9rem;
+    margin: 0.3125rem 0;
+}
+
+.five_stars i {
+    font-size: 0.7rem; /* Cambiar el tamaño de fuente según sea necesario */
+    margin-right: 0.15rem; /* Separación entre las estrellas */
+
+}
+
+.activity_container_bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.activity_container_price {
+    font-size: 0.7rem;
+    font-weight: bold;
+    line-height: 0.7rem; /* Se establece line-height en el mismo valor que la altura de la fuente para eliminar el espacio adicional alrededor del texto */
+}
+
+/* Media query para manejar el comportamiento responsive
+Buscamos crear un efecto de reducción progresiva a medida que redimensionamos la pantalla,
+para ello el algoritmo tiene dos partes. Si la altura ya es mayor al ancho, simplemente vamos reduciendo
+el ancho, pero en caso contrario, vamos reduciendo hasta que las proporciones hayan cambiado y haya pasado
+de landscape a portrait, aplicamos un pequeña redimensión y esto le lleva de nuevo a ser un landscape...
+*/
+@media (max-width: 1190px), (orientation: portrait) and (max-height: 1190px) {
+    .activity_container_box{
+        width: calc(65vw * 0.85);
+    }
+}
+
+@media (max-width: 1005px){
+    .activity_container_content h3 {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 850px){
+    .activity_container_content h3 {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 900px), (orientation: portrait) and (max-height: 900px) {
+    .activity_container_box{
+        width: calc(65vw * 0.75);
+    }
+}
+
+/* ultima modificacion cuando sea menor de 750px y crearemos la versión simplificada de la cajita sin imagenes... */
+@media (max-width: 750px), (orientation: portrait) and (max-width: 750px){
+    .activity_container_box {
+        width: 20rem;
+        height: 8rem;
+    }
+
+    .activity_container_image {
+        display: none;
+    }
+
+    .activity_container_content {
+        height: 7rem;
+    }
+
+    .activity_container_content h3 {
+        font-size: 1rem;
+        font-weight: bold;
+        margin: 0.3125rem 0;
+    }
+
+    .activity_container_content p {
+        font-size: 0.8rem;
+        margin: 0.3125rem 0;
+    }
+
+    #max_activity_description_height {
+        max-height: 3rem;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #ccc #fff;
+        scroll-behavior: smooth;
+    }
+
+}

@@ -1,0 +1,53 @@
+<header>
+  <div id="header_components">
+
+      <div id="menu_deplegable">
+        <input type="checkbox" id="menu_toggle" (change)="menuBtnClicked($event)">
+        <label for="menu_toggle" id="menu_toggle_label" class="bi bi-list"></label>
+      </div>
+    
+      <div class="recuadroLogo">
+        <a href=" "><img src="../../../assets/logo.png" alt="Logo"></a>
+      </div>
+    
+      <nav [style.left]="navLeft" [style.right]="navRight"> <!-- según el valor de menuVisible se mostrara o ocultara la navegación [ngStyle]="{'left': menuVisible ? '0' : '-100%'}"-->
+        <input type="checkbox" id="close_menu_toggle" (change)="menuBtnClicked($event)">
+        <label for="close_menu_toggle" id="close_menu_toggle_label" class="bi bi-x-lg"></label>
+        <i id="idiom_menu_responsive" class="bi bi-globe2"></i>
+        <ul>
+          <li><a href="">HOME</a></li>
+          <li><a href="aboutUs">SOBRE NOSOTROS</a></li>
+        </ul>
+      </nav>
+    
+      <div id="header_subOptions">
+        <div class="circle_icon" id="idiom_menu_normal">
+          <i class="bi bi-globe2">
+            <div class="dropdown_content">
+              <a>Español</a>
+              <a>English</a>
+              <a>Français</a>
+            </div>
+          </i>
+        </div>
+        <div class="circle_icon">
+            <i class="bi bi-person">
+            <div class="dropdown_content">
+              <a href="login">Iniciar sesión</a>
+              <a href="register">Registrarse</a>
+            </div>
+          </i>
+          <!--Lo que se muestra en el menu cuando un usuario se registra
+          <ng-container *ngIf="authService.currentUser$ | async as user; else noRegistrado">
+            <div class="dropdown_content">
+              <a href="AccountManagement">Perfil</a>
+              <a href="myActivities">Mis Actividades</a>
+              <a href="">Cerrar sesión</a>
+            </div>
+          </ng-container>
+        -->
+        </div>
+      </div>
+
+    </div>
+</header>

@@ -1,5 +1,16 @@
 <ion-content>
-    <ion-item *ngFor="let activity of activities">
-        <ion-label [routerLink]="['/activityDescription', activity.id]">{{activity.name}}</ion-label>
-    </ion-item>
+    <div id="component">
+        <app-header></app-header>
+        <app-searchbar [barTitle]="'¿QUE TE GUSTARÍA HACER?'" 
+        [barPlaceHolder]="'Escribe una actividad...'" (onSearch)="onFilterChange($event)" ></app-searchbar>
+        <div class="container">
+            <input type="checkbox" id="filter_toggle">
+            <label for="filter_toggle" id="filter_toggle_label" class="bi bi-filter">
+                <span class="filter_text">Filtros</span>
+            </label>
+            <div class="overlay"></div>
+            <app-filter (filterChange)="onFilterChange($event)" id="filteredActivities"></app-filter>
+            <app-activity [activities]="filteredActivities"></app-activity>
+        </div>
+    </div>
 </ion-content>
