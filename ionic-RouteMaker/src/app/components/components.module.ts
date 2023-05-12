@@ -12,7 +12,7 @@ import { FormsModule } from '@angular/forms';
 
 import { FilterComponent } from './filter/filter.component';
 import { ActivityComponent } from './activity/activity.component';
-
+import { SearchbarComponent } from './searchbar/searchbar.component';
 import { ActivityDescriptionPage } from '../pages/activity-description/activity-description.page';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -31,7 +31,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         ActivityDescriptionPage,
         HeaderComponent,
         FilterComponent,
-        ActivityComponent
+        ActivityComponent,
+        SearchbarComponent
     ],
     exports: [
         ActivityInfoComponent,
@@ -41,7 +42,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         HeaderComponent,
         MatPaginatorModule,
         FilterComponent,
-        ActivityComponent
+        ActivityComponent,
+        SearchbarComponent
     ]
 })
 
