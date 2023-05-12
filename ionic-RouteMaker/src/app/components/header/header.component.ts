@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 
 const First_Mediaquery_Breakpoint = 910;
 
@@ -13,7 +14,15 @@ export class HeaderComponent  implements OnInit {
   navLeft: any; //Lo iniciamos en default
   navRight: any;
 
-  constructor() { }
+  constructor(private router: Router) {
+    // Escucha los eventos de finalización de la navegación.
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.menuVisible = false;  // Oculta el menú cuando la navegación termina
+        this.hideOrShowHorizontalMenu(this.menuVisible);
+      }
+    });
+  }
 
   ngOnInit(): void {
     if (window.innerWidth > First_Mediaquery_Breakpoint){ //ya que cuando utilizamos (max-width: 890px) en el css, estamos diciendo que se ejecute si la pantalla es <= 890px
@@ -52,5 +61,4 @@ export class HeaderComponent  implements OnInit {
       this.hideOrShowHorizontalMenu(this.menuVisible);
     }
   }
-
 }
