@@ -54,7 +54,7 @@ transition: 0.2s;
 #filteredActivities {
     position: absolute;
     left: -100%;
-    z-index: 10000;
+    z-index: 9000;
 }
 
 #filter_toggle:checked ~ #filteredActivities {

@@ -1,5 +1,9 @@
 /* Estilos Predeterminados */
 
+header {
+    z-index: 100000;
+}
+
 #header_components {
     display: flex;
     align-items: center;

@@ -1,12 +1,9 @@
-<section class="home_container" (document:click)="onClickOutside($event)" >
+<section class="home_container" >
   <div class="home_content">
       <h1 id="home_phrase">{{ barTitle }}</h1>
       <div class="search_bar">
-          <input type="text" [(ngModel)]="actualSearchText" (ngModelChange)="filterSuggestions()" (keyup.enter)="onSubmit()" placeholder=" {{ barPlaceHolder }}">
+          <input type="text" [(ngModel)]="actualSearchText" (ngModelChange)="onSubmit()" (keyup.enter)="onSubmit()" placeholder=" {{ barPlaceHolder }}">
           <button class="search_button" (click)="onSubmit()"><i class="bi bi-search"></i></button>
-      </div>
-      <div #suggestionList class="suggestion-list" *ngIf="filteredSuggestions.length > 0 && actualSearchText.length > 0">
-          <p class="suggestion" *ngFor="let suggestion of filteredSuggestions.slice(0, numOfSuggestion)" (click)="onSuggestionClick(suggestion)">{{ suggestion }}</p>
       </div>
   </div>
 </section>

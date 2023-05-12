@@ -21,8 +21,6 @@ export class HomePage implements OnInit{
   maxCostFilter:number = 50;
   searchBarText:string = '';
 
-  suggestionsList: string[] = [];
-
   filterByParam: string = "";
 
   constructor(private firestoreService: FirestoreService, private route: ActivatedRoute) { }
@@ -33,7 +31,6 @@ export class HomePage implements OnInit{
       this.filteredActivities = activitiesData;
 
       //Establecemos los valores que se utilizaran para sugerir texto
-      this.setImportantWordsForSuggestion(activitiesData);
       this.onFilterChange({type: 'none', value: ''});
     });
 
@@ -64,16 +61,6 @@ export class HomePage implements OnInit{
   removeUnwantedWords(input: string): string {
     const filteredWords = this.removeUnwantedWordsInArray(input);
     return filteredWords.join(' ');
-  }
-
-  setImportantWordsForSuggestion(allTheActivities:Actividad[]): void{
-    
-    allTheActivities.forEach((oneActivity) => {
-      var importartWords: string[] = this.removeUnwantedWordsInArray(oneActivity.name);
-      this.suggestionsList = this.suggestionsList.concat(importartWords);
-    });
-
-
   }
 
   //Para poder comparar las categorías sin problema, por ej "Cultura" y "cultura" son iguales
