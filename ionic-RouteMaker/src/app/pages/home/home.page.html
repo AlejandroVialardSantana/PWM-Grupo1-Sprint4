@@ -1,4 +1,5 @@
 <ion-content>
+    <app-header></app-header>
     <ion-item *ngFor="let activity of activities">
         <ion-label [routerLink]="['/activityDescription', activity.id]">{{activity.name}}</ion-label>
     </ion-item>
