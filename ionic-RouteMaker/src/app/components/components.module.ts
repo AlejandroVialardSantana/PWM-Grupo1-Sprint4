@@ -22,7 +22,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         CommonModule,
         IonicModule, 
         FormsModule,
-        MatPaginatorModule
+        MatPaginatorModule,
     ],
     declarations: [
         ActivityInfoComponent,
@@ -38,7 +38,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         FooterComponent,
         LoaderComponent,
         ActivityDescriptionPage,
-        HeaderComponent
+        HeaderComponent,
+        MatPaginatorModule,
+        FilterComponent,
+        ActivityComponent
     ]
 })
 

@@ -5,12 +5,10 @@ import { Actividad } from 'src/app/models/actividades';
 import { Router } from '@angular/router';
 
 
-
-
 @Component({
   selector: 'app-activity',
   templateUrl: './activity.component.html',
-  styleUrls: ['./activity.component.css']
+  styleUrls: ['./activity.component.scss']
 })
 export class ActivityComponent implements OnInit, OnChanges {
   
