@@ -14,7 +14,8 @@ import { FilterComponent } from './filter/filter.component';
 import { ActivityComponent } from './activity/activity.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { ActivityDescriptionPage } from '../pages/activity-description/activity-description.page';
-
+import { FormRegisterComponent } from './form-register/form-register.component';
+import { FormLoginComponent } from './form-login/form-login.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
@@ -32,7 +33,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         HeaderComponent,
         FilterComponent,
         ActivityComponent,
-        SearchbarComponent
+        SearchbarComponent, 
+        FormRegisterComponent,
+        FormLoginComponent
     ],
     exports: [
         ActivityInfoComponent,
@@ -43,7 +46,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         MatPaginatorModule,
         FilterComponent,
         ActivityComponent,
-        SearchbarComponent
+        SearchbarComponent, 
+        FormRegisterComponent,
+        FormLoginComponent
     ]
 })
 

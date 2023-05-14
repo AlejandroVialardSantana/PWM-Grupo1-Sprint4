@@ -1,0 +1,56 @@
+<ion-title>Crear cuenta</ion-title>
+
+<ion-input 
+  label="Nombre" 
+  label-placement="floating" 
+  fill="outline" 
+  placeholder="Introduzca su nombre"
+  errorText="Campo requerido"
+  ngModel
+  required
+></ion-input>
+
+<ion-input 
+  label="Apellido" 
+  label-placement="floating" 
+  fill="outline" 
+  placeholder="Introduzca su apellido"
+  errorText="Campo requerido"
+  ngModel
+  required
+></ion-input>
+
+  <ion-input 
+  type="email" 
+  label="Correo electrónico" 
+  label-placement="floating" 
+  fill="outline" 
+  placeholder="Introduzca su email"
+  errorText="Introduzca un correo válido"
+  ngModel
+  email
+  required
+></ion-input>
+
+<ion-input 
+  type="password" 
+  label="Contraseña" 
+  label-placement="floating" 
+  fill="outline" 
+  placeholder="Introduzca una contraseña"
+  helperText="La contraseña debe contener como mínimo 8 caracteres "
+  errorText="Introduzca una contraseña"
+  ngModel
+  required
+></ion-input>
+<ion-input 
+  type="password" 
+  label="Repita la contraseña" 
+  label-placement="floating" 
+  fill="outline" 
+  placeholder="repetir contraseña"
+  errorText="Repita la contraseña"
+  ngModel
+  required
+></ion-input>
+<ion-button>Crear cuenta</ion-button>

@@ -1,0 +1,16 @@
+ion-title{
+    text-align: center;
+    margin: 3rem auto;
+}
+ion-input{
+    margin: 0.5rem auto;
+    max-width: 18.8rem;
+}
+
+ion-button{
+    display: flex;
+    max-width: 18.8rem;
+    margin: 0.5rem auto;
+    --background: #558A78;
+    --border-radius: 0;
+}
