@@ -1,25 +1,30 @@
 <ion-title>Iniciar sesion</ion-title>
-
-<ion-input 
+<form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <ion-input 
     type="email" 
     label="Correo electrónico" 
     label-placement="floating" 
     fill="outline" 
     placeholder="Introduzca su correo"
+    errorText="Introduzca su correo"
+    formControlName="email"
     ngModel
     required
-></ion-input>
-<ion-input 
+    ></ion-input>
+    <ion-input 
     type="password" 
     label="Contraseña" 
     label-placement="floating" 
     fill="outline" 
     placeholder="Introduzca su contraseña" 
+    errorText="Introduzca su contraseña"
+    formControlName="password"
     ngModel
     required
-></ion-input>
-<div class="registerPage">
-    <ion-label>¿No tienes cuenta?</ion-label>
-    <a href="register">Registrate</a>
-</div>
-<ion-button>Iniciar sesión</ion-button>
+    ></ion-input>
+    <div class="registerPage">
+        <ion-label>¿No tienes cuenta?</ion-label>
+        <a href="register">Registrate</a>
+    </div>
+    <input class="buttonLogin" type="submit" value="Iniciar sesión">
+</form>

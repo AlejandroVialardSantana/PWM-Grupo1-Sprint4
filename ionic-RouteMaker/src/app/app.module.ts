@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
@@ -20,6 +20,8 @@ import { ComponentsModule } from './components/components.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { provideAuth } from '@angular/fire/auth';
+import { getAuth } from 'firebase/auth';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,10 +34,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     FirestoreModule,
+    AngularFireModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
+    provideAuth(() => getAuth()),
     BrowserAnimationsModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    ReactiveFormsModule
     
     ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
