@@ -31,21 +31,25 @@
           </i>
         </div>
         <div class="circle_icon">
+          <ng-template #noRegistrado>
+            <i class="bi bi-person">
+              <div class="dropdown_content">
+                <a href="login">Iniciar sesión</a>
+                <a href="register">Registrarse</a>
+              </div>
+            </i>
+          </ng-template>
+          <!--Lo que se muestra en el menu cuando un usuario se registra-->
+          <ng-container *ngIf="authService.currentUser$ | async as user; else noRegistrado">
             <i class="bi bi-person">
             <div class="dropdown_content">
-              <a href="login">Iniciar sesión</a>
-              <a href="register">Registrarse</a>
-            </div>
-          </i>
-          <!--Lo que se muestra en el menu cuando un usuario se registra
-          <ng-container *ngIf="authService.currentUser$ | async as user; else noRegistrado">
-            <div class="dropdown_content">
-              <a href="AccountManagement">Perfil</a>
-              <a href="myActivities">Mis Actividades</a>
-              <a href="">Cerrar sesión</a>
-            </div>
+                <a href="AccountManagement">Perfil</a>
+                <a href="myActivities">Mis Actividades</a>
+                <a href="home" (click)="logout()">Cerrar sesión</a>
+              </div>
+            </i>
           </ng-container>
-        -->
+        
         </div>
       </div>
 

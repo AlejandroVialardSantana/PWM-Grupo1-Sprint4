@@ -1,5 +1,7 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
+import { UserService } from 'src/app/services/user.service';
 
 const First_Mediaquery_Breakpoint = 910;
 
@@ -10,17 +12,24 @@ const First_Mediaquery_Breakpoint = 910;
 })
 export class HeaderComponent  implements OnInit {
 
+  user$ = this.userService.currentUserProfile$;
+
   menuVisible = false;
   navLeft: any; //Lo iniciamos en default
   navRight: any;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, public authService: AuthenticationService, private userService: UserService ) {
     // Escucha los eventos de finalización de la navegación.
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.menuVisible = false;  // Oculta el menú cuando la navegación termina
         this.hideOrShowHorizontalMenu(this.menuVisible);
       }
+    });
+  }
+  logout(){
+    this.authService.logout().subscribe(() => {
+      this.router.navigate([""]);
     });
   }
 
