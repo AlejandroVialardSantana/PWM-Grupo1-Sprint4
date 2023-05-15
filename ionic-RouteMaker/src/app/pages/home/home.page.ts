@@ -3,6 +3,7 @@ import { Actividad } from 'src/app/models/actividades';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class HomePage implements OnInit{
 
   filterByParam: string = "";
 
-  constructor(private firestoreService: FirestoreService, private route: ActivatedRoute) { }
+  constructor(private firestoreService: FirestoreService, private route: ActivatedRoute, private sqlite: SQLite) { }
 
   ngOnInit(): void {
     this.firestoreService.getActivities().subscribe((activitiesData: Actividad[]) => {
@@ -32,6 +33,17 @@ export class HomePage implements OnInit{
 
       //Establecemos los valores que se utilizaran para sugerir texto
       this.onFilterChange({type: 'none', value: ''});
+
+      // Creamos la base de datos SQLite y la tabla de favoritos si no existe
+      this.sqlite.create({
+        name: 'data.db',
+        location: 'default'
+      })
+      .then((db: SQLiteObject) => {
+        db.executeSql('CREATE TABLE IF NOT EXISTS favoritos(id INTEGER PRIMARY KEY, name TEXT, image TEXT, location TEXT, location_map TEXT, uniqueEmail text)', [])
+        .catch(e => console.log(e));
+      });
+
     });
 
     this.paramSubscription = this.route.paramMap.subscribe(params => {
