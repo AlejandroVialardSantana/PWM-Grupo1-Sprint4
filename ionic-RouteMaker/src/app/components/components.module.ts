@@ -17,6 +17,8 @@ import { ActivityDescriptionPage } from '../pages/activity-description/activity-
 import { FormRegisterComponent } from './form-register/form-register.component';
 import { FormLoginComponent } from './form-login/form-login.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MyActivitiesPage } from '../pages/my-activities/my-activities.page';
+import { MyActivityListComponent } from './my-activity-list/my-activity-list.component';
 
 @NgModule({
     imports: [
@@ -36,7 +38,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         ActivityComponent,
         SearchbarComponent, 
         FormRegisterComponent,
-        FormLoginComponent
+        FormLoginComponent,
+        MyActivityListComponent,
+        MyActivitiesPage
     ],
     exports: [
         ActivityInfoComponent,
@@ -49,7 +53,9 @@ import { MatPaginatorModule } from '@angular/material/paginator';
         ActivityComponent,
         SearchbarComponent, 
         FormRegisterComponent,
-        FormLoginComponent
+        FormLoginComponent,
+        MyActivityListComponent,
+        MyActivitiesPage
     ]
 })
 
