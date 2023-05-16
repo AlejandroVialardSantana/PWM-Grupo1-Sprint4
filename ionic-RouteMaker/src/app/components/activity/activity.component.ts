@@ -53,7 +53,7 @@ export class ActivityComponent implements OnInit, OnChanges {
       location.reload();
     });  
     */
-    this.router.navigate([`/activityDescription/${activity.id}`]);
+    this.router.navigate([`/activityDescription/${activity.id}/${activity.name}`]);
 
   }
   

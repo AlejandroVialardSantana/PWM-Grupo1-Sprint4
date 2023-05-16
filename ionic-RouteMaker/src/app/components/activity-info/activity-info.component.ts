@@ -3,6 +3,7 @@ import { Actividad } from '../../models/actividades';
 import { FirestoreService } from 'src/app/services/firestore.service';
 import { DomSanitizer, SafeUrl  } from '@angular/platform-browser';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-activity-info',
@@ -12,17 +13,18 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 export class ActivityInfoComponent  implements OnInit {
 
   @Input() actividad: Actividad = {} as Actividad;
+  activityName: string | null = '';
   isFavorite: boolean = false;
   db: SQLiteObject = {} as SQLiteObject;
   userEmail: string | null = '';
 
-  constructor(private firestore: FirestoreService, private sanitizer: DomSanitizer, private sqlite: SQLite) { 
+  constructor(private firestore: FirestoreService, private sanitizer: DomSanitizer, private sqlite: SQLite, private route: ActivatedRoute) { 
     //this.userEmail = localStorage.getItem('thisUserMail');
     this.userEmail = "prueba@example.com";
+    this.activityName = this.route.snapshot.paramMap.get('name');
   }
 
   ngOnInit() {
-    alert("Empezamos");
     this.sqlite.create({
       name: 'data.db',
       location: 'default'
@@ -37,8 +39,7 @@ export class ActivityInfoComponent  implements OnInit {
   }
 
   checkFavorite() {
-    alert("Checkeamos el favorito, activityname: " + this.actividad.name + " y email: " + this.userEmail);
-    this.db.executeSql('SELECT * FROM favoritos WHERE name = ? AND uniqueEmail = ?', [this.actividad.name, this.userEmail])
+    this.db.executeSql('SELECT * FROM favoritos WHERE name = ? AND uniqueEmail = ?', [this.activityName, this.userEmail])
       .then(res => {
         this.isFavorite = res.rows.length > 0;
         alert("Obtenemos: " + this.isFavorite);
@@ -47,7 +48,7 @@ export class ActivityInfoComponent  implements OnInit {
 
   toggleFavorite() {
     if (this.isFavorite) {
-      this.db.executeSql('DELETE FROM favoritos WHERE name = ? AND uniqueEmail = ?', [this.actividad.name, this.userEmail])
+      this.db.executeSql('DELETE FROM favoritos WHERE name = ? AND uniqueEmail = ?', [this.activityName, this.userEmail])
         .then(res => {
           this.isFavorite = false;
         })
