@@ -22,6 +22,7 @@ export class ActivityInfoComponent  implements OnInit {
   }
 
   ngOnInit() {
+    alert("Empezamos");
     this.sqlite.create({
       name: 'data.db',
       location: 'default'
@@ -36,9 +37,11 @@ export class ActivityInfoComponent  implements OnInit {
   }
 
   checkFavorite() {
+    alert("Checkeamos el favorito, activityname: " + this.actividad.name + " y email: " + this.userEmail);
     this.db.executeSql('SELECT * FROM favoritos WHERE name = ? AND uniqueEmail = ?', [this.actividad.name, this.userEmail])
       .then(res => {
         this.isFavorite = res.rows.length > 0;
+        alert("Obtenemos: " + this.isFavorite);
       });
   }
 
@@ -46,13 +49,11 @@ export class ActivityInfoComponent  implements OnInit {
     if (this.isFavorite) {
       this.db.executeSql('DELETE FROM favoritos WHERE name = ? AND uniqueEmail = ?', [this.actividad.name, this.userEmail])
         .then(res => {
-          console.log('Actividad eliminada de favoritos');
           this.isFavorite = false;
         })
     } else {
-      this.db.executeSql('INSERT INTO favoritos (id, name, image, location, location_map, uniqueEmail) VALUES (NULL, ?, ?, ?, ?, ?)', [this.actividad.name, this.actividad.image, this.actividad.location, this.actividad.location_map, this.userEmail])
+      this.db.executeSql('INSERT INTO favoritos (name, image, location, location_map, uniqueEmail) VALUES (?, ?, ?, ?, ?)', [this.actividad.name, this.actividad.image, this.actividad.location, this.actividad.location_map, this.userEmail])
         .then(res => {
-          console.log('Actividad añadida a favoritos');
           this.isFavorite = true;
         })
     }
