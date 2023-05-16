@@ -12,7 +12,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'activityDescription/:id',
+    path: 'activityDescription/:id/:name',
     loadChildren: () => import('./pages/activity-description/activity-description.module').then( m => m.ActivityDescriptionPageModule)
   },
   {
