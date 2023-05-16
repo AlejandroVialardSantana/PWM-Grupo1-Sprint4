@@ -19,8 +19,8 @@ export class ActivityInfoComponent  implements OnInit {
   userEmail: string | null = '';
 
   constructor(private firestore: FirestoreService, private sanitizer: DomSanitizer, private sqlite: SQLite, private route: ActivatedRoute) { 
-    //this.userEmail = localStorage.getItem('thisUserMail');
-    this.userEmail = "prueba@example.com";
+    this.userEmail = localStorage.getItem('thisUserMail');
+    //this.userEmail = "prueba@example.com";
     this.activityName = this.route.snapshot.paramMap.get('name');
   }
 
