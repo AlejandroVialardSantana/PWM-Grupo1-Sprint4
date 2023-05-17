@@ -31,6 +31,7 @@
           </i>
         </div>
         <div class="circle_icon">
+          <img *ngIf="user$ | async as user" [src]="user.photoURL ?? '/assets/images/image-placeholder.png'" />
           <ng-template #noRegistrado>
             <i class="bi bi-person">
               <div class="dropdown_content">
@@ -41,13 +42,11 @@
           </ng-template>
           <!--Lo que se muestra en el menu cuando un usuario se registra-->
           <ng-container *ngIf="authService.currentUser$ | async as user; else noRegistrado">
-            <i class="bi bi-person">
             <div class="dropdown_content">
-                <a href="AccountManagement">Perfil</a>
+                <a href="perfil">Perfil</a>
                 <a href="myActivities">Mis Actividades</a>
                 <a href="home" (click)="logout()">Cerrar sesión</a>
               </div>
-            </i>
           </ng-container>
         
         </div>

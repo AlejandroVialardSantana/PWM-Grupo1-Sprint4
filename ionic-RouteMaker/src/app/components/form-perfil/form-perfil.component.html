@@ -1,0 +1,48 @@
+<form id="container" *ngIf="user$ | async as user">
+  <div class="profile-image">
+    <img
+      width="120"
+      height="120"
+      [src]="user.photoURL ?? '/assets/images/image-placeholder.png'"
+    />
+    <button (click)="inputField.click()">
+      <ion-icon name="create-outline"></ion-icon>
+    </button>
+  </div>
+  <input #inputField hidden type="file" (change)="uploadFile($event, user)" />
+  <ion-grid  (ngSubmit)="saveProfile()" [formGroup]="profileForm">
+    <ion-row>
+      <ion-col>
+        <ion-label class="campo">Nombre:</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-input [clearInput]="true" value="{{user.displayName}}" formControlName="displayName"></ion-input>
+      </ion-col>
+    </ion-row>
+    <hr class="hr-small">
+    <ion-row>
+      <ion-col>
+        <ion-label class="campo">Apellido:</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-input [clearInput]="true" value="{{user.displaySurname}}" value=user.displaSurname formControlName="displaySurname"></ion-input>
+      </ion-col>
+    </ion-row>
+    <hr class="hr-small">
+    <ion-row>
+      <ion-col>
+        <ion-label class="campo" stacked>Email:</ion-label>
+      </ion-col>
+      <ion-col>
+        <ion-label>{{user.email}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <hr class="hr-small">
+    <ion-row>
+      <button type="submit" id="saveButton">Guardar</button>
+    </ion-row>
+    <ion-row>
+      <button type="button" id="deleteButton" (click)="openOverlay.showDeleteAccount=true">Eliminar cuenta</button>
+    </ion-row>
+  </ion-grid>
+</form>
