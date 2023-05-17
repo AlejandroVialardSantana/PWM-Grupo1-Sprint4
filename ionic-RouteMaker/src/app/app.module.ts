@@ -22,6 +22,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { provideAuth } from '@angular/fire/auth';
 import { getAuth } from 'firebase/auth';
+import { StorageModule } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,7 +41,8 @@ import { getAuth } from 'firebase/auth';
     provideAuth(() => getAuth()),
     BrowserAnimationsModule,
     MatPaginatorModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StorageModule
     
     ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],

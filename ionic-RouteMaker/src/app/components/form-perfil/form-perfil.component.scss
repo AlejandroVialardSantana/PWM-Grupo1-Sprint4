@@ -1,0 +1,81 @@
+#container{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    height: 100vh;
+    width: 17rem;
+    margin: 10rem auto;
+}
+#campo{
+    margin: 1rem auto;
+}
+
+.hr-small {
+    height: 3px;
+    background: #87A49B;
+    border-color: #87A49B;
+}
+
+ion-row{
+    max-height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-image{
+    width: 150px;
+    margin-right: 16px;
+    height: 150px;
+    display: inline-block;
+    position: relative;
+    margin:auto;
+    display: flex;
+}
+.profile-image>img {
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.profile-image > button {
+    position: absolute;
+    border-radius: 100%;
+    border: 0;
+    bottom:1.2em;
+    right: 2em;
+    height: 2rem;
+    width: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #A0B1AC;
+}
+
+#saveButton{
+    background-color: #558A78;
+    color: white;
+    width: 6rem;
+    height: 2rem;
+    border-radius: 0.3rem;
+    margin: 1rem auto;
+}
+
+#deleteButton{
+    background-color: #BE2F51;
+    color: white;
+    width: 8rem;
+    height: 2rem;
+    border-radius: 0.3rem;
+    margin: 1rem auto;
+}
+
+#saveButton:active{
+    background-color: #446b5e;
+}
+
+#deleteButton:active{
+    background-color: #89263d;
+}
