@@ -24,6 +24,8 @@ import { provideAuth } from '@angular/fire/auth';
 import { getAuth } from 'firebase/auth';
 import { StorageModule } from '@angular/fire/storage';
 
+import { SQLite } from '@ionic-native/sqlite/ngx';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [BrowserModule, 
@@ -45,7 +47,7 @@ import { StorageModule } from '@angular/fire/storage';
     StorageModule
     
     ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, SQLite],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

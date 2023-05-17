@@ -12,15 +12,20 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'activityDescription/:id',
+    path: 'activityDescription/:id/:name',
     loadChildren: () => import('./pages/activity-description/activity-description.module').then( m => m.ActivityDescriptionPageModule)
-  },  {
+  },
+  {
     path: 'login',
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: 'myActivities',
+    loadChildren: () => import('./pages/my-activities/my-activities.module').then( m => m.MyActivitiesPageModule)
   },
   {
     path: 'perfil',

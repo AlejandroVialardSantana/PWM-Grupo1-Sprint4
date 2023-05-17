@@ -19,6 +19,8 @@ import { FormLoginComponent } from './form-login/form-login.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FormPerfilComponent } from './form-perfil/form-perfil.component';
 import { DeleteAccountComponent } from './delete-account/delete-account.component';
+import { MyActivitiesPage } from '../pages/my-activities/my-activities.page';
+import { MyActivityListComponent } from './my-activity-list/my-activity-list.component';
 
 @NgModule({
     imports: [
@@ -39,6 +41,8 @@ import { DeleteAccountComponent } from './delete-account/delete-account.componen
         SearchbarComponent, 
         FormRegisterComponent,
         FormLoginComponent,
+        MyActivityListComponent,
+        MyActivitiesPage,
         FormPerfilComponent,
         DeleteAccountComponent
     ],
@@ -54,6 +58,8 @@ import { DeleteAccountComponent } from './delete-account/delete-account.componen
         SearchbarComponent, 
         FormRegisterComponent,
         FormLoginComponent,
+        MyActivityListComponent,
+        MyActivitiesPage,
         FormPerfilComponent,
         DeleteAccountComponent
     ]
