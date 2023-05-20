@@ -14,21 +14,11 @@ export class AuthenticationService {
   constructor(private auth: Auth) {}
 
   login(email: string, password: string): Observable<any> {
-    //Para que no se mantenga iniciada la sesión
-    setPersistence(this.auth, browserSessionPersistence).then(() => {
-      localStorage.setItem('thisUserMail', email);
-      return signInWithEmailAndPassword(this.auth, email, password);
-    });
     localStorage.setItem('thisUserMail', email);
     return from(signInWithEmailAndPassword(this.auth, email, password));
   }
 
   signUp(email: string, password: string) {
-    //Para que no se mantenga iniciada la sesión
-    setPersistence(this.auth, browserSessionPersistence).then(() => {
-      localStorage.setItem('thisUserMail', email);
-      return signInWithEmailAndPassword(this.auth, email, password);
-    });
     localStorage.setItem('thisUserMail', email);
     return from(createUserWithEmailAndPassword(this.auth, email, password));
   }
