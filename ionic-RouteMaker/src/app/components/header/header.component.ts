@@ -44,6 +44,10 @@ export class HeaderComponent  implements OnInit {
     }
   }
 
+  arrowBtnClicked(event: Event) {
+    this.router.navigate(['']);
+  }
+
   menuBtnClicked(event: Event) {
     const target = event.target as HTMLInputElement;
     //const isChecked = target.checked;
@@ -72,8 +76,4 @@ export class HeaderComponent  implements OnInit {
     }
   }
 
-  goHome() {
-    alert("goHome");
-    this.router.navigate(['']);
-  }
 }

@@ -4,9 +4,8 @@
     <div id="menu_deplegable">
       <input *ngIf="isHome" type="checkbox" id="menu_toggle" (change)="menuBtnClicked($event)">
       <label *ngIf="isHome" for="menu_toggle" id="menu_toggle_label" class="bi bi-list"></label>
-      <button *ngIf="!isHome" onclick="goHome()">
-        <i class="bi bi-arrow-left"></i>
-      </button>
+      <input *ngIf="!isHome" type="checkbox" id="menu_toggle2">
+      <label *ngIf="!isHome" for="menu_toggle2" (click)="arrowBtnClicked($event)" id="menu_toggle_label2" class="bi bi-arrow-left-short"></label>
     </div>
 
     <div class="recuadroLogo">
