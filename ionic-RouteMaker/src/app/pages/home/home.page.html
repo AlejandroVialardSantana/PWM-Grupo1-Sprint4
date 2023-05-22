@@ -1,6 +1,6 @@
 <ion-content>
     <div id="component">
-        <app-header></app-header>
+        <app-header [isHome]="true"></app-header>
         <app-searchbar [barTitle]="'¿QUE TE GUSTARÍA HACER?'" 
         [barPlaceHolder]="'Escribe una actividad...'" (onSearch)="onFilterChange($event)" ></app-searchbar>
         <div class="container">
