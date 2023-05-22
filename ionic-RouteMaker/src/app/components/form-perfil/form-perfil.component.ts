@@ -17,6 +17,7 @@ import { OpenOverlayService } from 'src/app/services/open-overlay.service';
 export class FormPerfilComponent  implements OnInit {
   
   user$ = this.userService.currentUserProfile$;
+  disableButton=true;
 
   profileForm = this.noNull.group({
     uid: [''],
@@ -59,8 +60,9 @@ export class FormPerfilComponent  implements OnInit {
   }
 
   saveProfile() {
+    this.disableButton = true
+    console.log(this.disableButton + "Estado boton")
     const { uid, ...data } = this.profileForm.value;
-
     if (!uid) {
       return;
     }
@@ -74,6 +76,6 @@ export class FormPerfilComponent  implements OnInit {
         })
         )
         .subscribe();
-        console.log(this.openOverlay.showDeleteAccount);
   }
+  
 }

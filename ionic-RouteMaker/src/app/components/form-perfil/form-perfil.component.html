@@ -16,7 +16,7 @@
         <ion-label class="campo">Nombre:</ion-label>
       </ion-col>
       <ion-col>
-        <ion-input [clearInput]="true" value="{{user.displayName}}" formControlName="displayName"></ion-input>
+        <ion-input [clearInput]="true" value="{{user.displayName}}" formControlName="displayName" (change)="disableButton = false"></ion-input>
       </ion-col>
     </ion-row>
     <hr class="hr-small">
@@ -25,7 +25,7 @@
         <ion-label class="campo">Apellido:</ion-label>
       </ion-col>
       <ion-col>
-        <ion-input [clearInput]="true" value="{{user.displaySurname}}" value=user.displaSurname formControlName="displaySurname"></ion-input>
+        <ion-input [clearInput]="true" value="{{user.displaySurname}}" value=user.displaSurname formControlName="displaySurname" (change)="disableButton = false"></ion-input>
       </ion-col>
     </ion-row>
     <hr class="hr-small">
@@ -39,7 +39,7 @@
     </ion-row>
     <hr class="hr-small">
     <ion-row>
-      <button type="submit" id="saveButton">Guardar</button>
+      <button type="submit" id="saveButton"  (click)="saveProfile()" [ngStyle]="{ 'background-color': disableButton ? 'gray' : '#558A78' }" [disabled]="disableButton">Guardar</button>
     </ion-row>
     <ion-row>
       <button type="button" id="deleteButton" (click)="openOverlay.showDeleteAccount=true">Eliminar cuenta</button>
