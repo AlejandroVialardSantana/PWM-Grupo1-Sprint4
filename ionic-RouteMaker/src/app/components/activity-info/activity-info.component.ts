@@ -42,7 +42,6 @@ export class ActivityInfoComponent  implements OnInit {
     this.db.executeSql('SELECT * FROM favoritos WHERE name = ? AND uniqueEmail = ?', [this.activityName, this.userEmail])
       .then(res => {
         this.isFavorite = res.rows.length > 0;
-        alert("Obtenemos: " + this.isFavorite);
       });
   }
 

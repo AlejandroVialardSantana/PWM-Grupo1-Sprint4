@@ -4,6 +4,7 @@ import { Actividad } from '../../models/actividades';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { PageEvent } from '@angular/material/paginator';
 import { Subscription } from 'rxjs';
+import { SQLite, SQLiteObject } from '@ionic-native/sqlite/ngx';
 
 @Component({
   selector: 'app-my-activity-list',
@@ -16,6 +17,8 @@ export class MyActivityListComponent implements OnInit {
   user$ = this.userService.currentUserProfile$;
   showMap: boolean[] = [];
   subscription: Subscription = new Subscription();
+  db: SQLiteObject = {} as SQLiteObject;
+  userEmail: string | null = '';
 
   // Paginator Inputs
   pageSize = 5;
@@ -24,14 +27,25 @@ export class MyActivityListComponent implements OnInit {
   pageIndex = 0;
   startIndex = 0;
 
-  constructor(private userService: UserService, private sanitizer: DomSanitizer) { }
+  constructor(private userService: UserService, private sanitizer: DomSanitizer, private sqlite: SQLite) { 
+    this.userEmail = localStorage.getItem('thisUserMail');
+  }
 
   ngOnInit(): void {
-    this.user$.subscribe(user => {
-      if (user) {
-        this.activities = user.activities || [];
+    this.sqlite.create({
+      name: 'data.db',
+      location: 'default'
+    }).then((db: SQLiteObject) => {
+      this.db = db;
+      this.db.executeSql('SELECT * FROM favoritos where uniqueEmail = ?', [this.userEmail])
+      .then(res => {
+        for (let i = 0; i < res.rows.length; i++) {
+          const datosDB = res.rows.item(i);
+          const actividad: Actividad = this.asignarValoresActividad(datosDB);
+          this.activities.push(actividad);
+        }
         this.paginateActivities();
-      }
+      });
     });
   }
 
@@ -49,16 +63,34 @@ export class MyActivityListComponent implements OnInit {
     const confirmation = confirm('¿Está seguro de que desea eliminar esta actividad?');
     if (confirmation) {
       const activityIndex = this.startIndex + index;
-      this.subscription = this.user$.subscribe(user => {
-        if (user) {
-          user.activities?.splice(activityIndex, 1);
-          this.userService.updateUser(user);
-          this.activities = user.activities || [];
-          this.paginateActivities();
-        }
-        this.subscription.unsubscribe();
-      });
+      if (this.userEmail) {
+        this.db.executeSql('DELETE FROM favoritos WHERE uniqueEmail = ? AND name = ?', [this.userEmail, this.activities[activityIndex].name])
+        .then(res => {
+          console.log(res);
+        });
+      }
+      this.activities.splice(activityIndex, 1);
+      this.paginateActivities();
     }
   }
 
+  asignarValoresActividad(datosDB: any): Actividad {
+    const actividad: Actividad = {
+      name: datosDB.name,
+      description: '', // Valor por defecto
+      image: datosDB.image,
+      location: datosDB.location,
+      city: '', // Valor por defecto
+      location_map: datosDB.location_map,
+      category: [], // Valor por defecto
+      user_reviews: [], // Valor por defecto
+      duration: 0, // Valor por defecto
+      price: 0, // Valor por defecto
+      specificNeeds: [], // Valor por defecto
+      stars: 0, // Valor por defecto
+      stars_array: [] // Valor por defecto
+    };
+  
+    return actividad;
+  }
 }
