@@ -15,11 +15,11 @@
       </div>
   </div>
     <div class="fav">
-          <button class="fav_button" id="fav_button" (click)="toggleFavorite()">
-              <i class="bi bi-heart" id="fav_icon">
-              </i>
-              <p>{{isFavorite ? 'Eliminar de favoritos' : 'Guardar como favorito'}}</p>
-          </button>
+        <button class="fav_button" id="fav_button" (click)="toggleFavorite()" [disabled]=disableButton  [ngStyle]="{ 'background-color': disableButton ? 'gray' : '#558A78' }">
+            <i class="bi bi-heart" id="fav_icon">
+            </i>
+            <p>{{isFavorite ? 'Eliminar de favoritos' : 'Guardar como favorito'}}</p>
+        </button>
     </div>
   
 </section>

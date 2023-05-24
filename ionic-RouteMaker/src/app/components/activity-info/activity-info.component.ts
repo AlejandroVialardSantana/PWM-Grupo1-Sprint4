@@ -12,6 +12,7 @@ import { HotToastService } from '@ngneat/hot-toast';
   styleUrls: ['./activity-info.component.scss'],
 })
 export class ActivityInfoComponent implements OnInit {
+  disableButton = true;
 
   @Input() actividad: Actividad = {} as Actividad;
   activityName: string | null = '';
@@ -33,6 +34,10 @@ export class ActivityInfoComponent implements OnInit {
       this.db = db;
       this.checkFavorite();
     });
+
+    if(this.userEmail != ""){
+      this.disableButton=false;
+    }
   }
 
   sanitizeUrl(url: string): SafeUrl {
@@ -51,6 +56,7 @@ export class ActivityInfoComponent implements OnInit {
     if (this.isFavorite) {
       this.db.executeSql('DELETE FROM favoritos WHERE name = ? AND uniqueEmail = ?', [this.activityName, this.userEmail])
         .then(res => {
+          this.toast.success("Actividad eliminada de 'Mis Actividades'")
           this.isFavorite = false;
           favIcon?.classList.remove('bi-heart-fill');
           favIcon?.classList.add('bi-heart');
@@ -58,6 +64,7 @@ export class ActivityInfoComponent implements OnInit {
     } else {
       this.db.executeSql('INSERT INTO favoritos (name, image, location, location_map, uniqueEmail) VALUES (?, ?, ?, ?, ?)', [this.actividad.name, this.actividad.image, this.actividad.location, this.actividad.location_map, this.userEmail])
         .then(res => {
+          this.toast.success("Actividad guardada en 'Mis Actividades'")
           this.isFavorite = true;
           favIcon?.classList.remove('bi-heart');
           favIcon?.classList.add('bi-heart-fill');
