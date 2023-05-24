@@ -23,6 +23,7 @@ export class AuthenticationService {
     return from(createUserWithEmailAndPassword(this.auth, email, password));
   }
   logout() {
+    localStorage.setItem('thisUserMail', "");
     return from(this.auth.signOut());
   }
 
