@@ -72,6 +72,28 @@
     height: 20rem;
 }
 
+.fav_button {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-radius: 3rem;
+    margin-bottom: 1rem;
+    background-color: #558A78;
+    color: #fff;
+    padding: 0.7rem;
+}
+
+.fav_button i,
+.fav_button p {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+}
+
+.fav_button #fav_icon {
+    margin-right: 0.5rem;
+}
+
 @media (max-width: 1280px) {
     .activity_description .activity_details .reviews .review .review_text {
         font-size: 1rem;

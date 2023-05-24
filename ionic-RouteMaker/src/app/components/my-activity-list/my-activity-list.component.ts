@@ -15,7 +15,6 @@ export class MyActivityListComponent implements OnInit {
 
   activities: Actividad[] = [];
   user$ = this.userService.currentUserProfile$;
-  showMap: boolean[] = [];
   subscription: Subscription = new Subscription();
   db: SQLiteObject = {} as SQLiteObject;
   userEmail: string | null = '';

@@ -23,6 +23,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { provideAuth } from '@angular/fire/auth';
 import { getAuth } from 'firebase/auth';
 import { StorageModule } from '@angular/fire/storage';
+import { HotToastModule } from '@ngneat/hot-toast';
 
 import { SQLite } from '@ionic-native/sqlite/ngx';
 
@@ -38,6 +39,7 @@ import { SQLite } from '@ionic-native/sqlite/ngx';
     AngularFireDatabaseModule,
     FirestoreModule,
     AngularFireModule,
+    HotToastModule.forRoot(),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),

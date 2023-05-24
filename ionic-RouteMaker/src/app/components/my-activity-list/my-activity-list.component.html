@@ -6,7 +6,6 @@
       </div>
       <div class="location_toggle">
           <p>Tafira Baja, Las Palmas de Gran Canaria</p>
-
       </div>
   </div>
   <div class="activities_items" *ngFor="let activity of paginatedActivities; let i = index">
@@ -15,7 +14,7 @@
               <div class="activities_item_info">
                   <h3>{{activity.name}}</h3>
                   <p>10.00 - 16.00</p>
-                  <a class="location_link" (click)="showMap[i] = !showMap[i]"><i class="location_map_link bi bi-geo-alt"></i>{{activity.location}}</a>
+                  <i class="location_map_link bi bi-geo-alt"><a class="location_link">{{activity.location}}</a></i>
               </div>
               <div class="my_activity_img">
                   <img src="{{activity.image}}" alt="{{activity.name}}">
@@ -24,9 +23,6 @@
           <div class="close" (click)="removeActivity(i)">
               <i class="close-btn bi bi-x-lg"></i>
           </div>
-      </div>
-      <div class="location_collapse" *ngIf="showMap[i]">
-          <iframe [src]="sanitizeUrl(activity.location_map)"></iframe>
       </div>
   </div>    
 
@@ -37,7 +33,6 @@
   </mat-paginator>
 
   <div class="buttons">
-      <button class="button"><a href="activities">Cambiar actividades</a></button>
-      <button class="button"><a href="">Ver actividades en mapa</a></button>
+      <button class="button"><a [routerLink]="['/home']">Cambiar actividades</a></button>
   </div>
 </section>

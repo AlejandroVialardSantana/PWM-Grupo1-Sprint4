@@ -85,10 +85,6 @@
     grid-template-columns: 1fr 2%;
 }
 
-.activities_items .activities_item_container .close .close-btn:hover {
-    cursor: pointer;
-}
-
 .activities_items .activities_item .activities_item_info h3 {
     margin-bottom: 0.5rem;
     font-size: 1.2rem;
@@ -106,12 +102,6 @@
     transition: all 0.3s ease;
 }
 
-.activities_items .activities_item .activities_item_info .location_link:hover {
-    color: #558A78;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
 .activities_items .activities_item .activities_item_info .location_link i {
     margin-right: 0.5rem;
 }
@@ -127,11 +117,6 @@
     border-radius: 0 2rem 2rem 0;
     height: 100%;
     width: 100%;
-}
-
-.location_collapse iframe {
-    width: 100%;
-    height: 100%;
 }
 
 .buttons {
@@ -265,10 +250,6 @@
 
     .activities_items .activities_item .my_activity_img img {
         border-radius: 0 1rem 1rem 0;
-    }
-
-    .activities_items .activities_item .activities_item_info .location_link {
-        display: none;
     }
 
     .activities_items .activities_item .activities_item_info p a {
